@@ -28,7 +28,7 @@ module.exports = MyBase.extend({
 			//, defaults: "Window"
 		});
 		// normalizing windowName
-		this.windowName = _.startCase(this.windowName).replace(/\s/g,'');
+		this.windowName = _.startCase(this.windowName).replace(/\s/g, '');
 
 		/** filenames */
 		this.names = {
@@ -256,8 +256,8 @@ module.exports = MyBase.extend({
 		copyTpl('css', self.paths.window, {});
 		copyTpl('js', self.paths.window, {});
 
-		copyTpl('cssShared', self.paths.base, {});
-		copyTpl('jsShared', self.paths.base, {});
+		copyTplUnlessExists('cssShared', self.paths.base, {});
+		copyTplUnlessExists('jsShared', self.paths.base, {});
 
 		// write the manifest.json
 		this.fs.writeJSON(this.destinationPath('manifest.json'), this.manifest);
@@ -271,6 +271,12 @@ module.exports = MyBase.extend({
 				self.destinationPath(dir + self.names[type]),
 				options
 			);
+		}
+
+		function copyTplUnlessExists(type, dir, options) {
+			if ( ! self.fs.exists( self.destinationPath( dir + self.names[type] ) ) ) {
+				copyTpl(type, dir, options);
+			}
 		}
 	},
 	// 6 Where conflicts are handled (used internally)

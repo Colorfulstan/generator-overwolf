@@ -265,7 +265,6 @@ module.exports = generators.Base.extend({
 
 		mkdirp(self.destinationPath('assets/img/'), function (err) {
 			// path was created unless there was error
-			// TODO: copy template icon.png and icon_gray.png
 			self.fs.copy(self.templatePath('icon_hover.png'), self.destinationPath(self.manifest.meta.icon));
 			self.fs.copy(self.templatePath('icon_inactive.png'), self.destinationPath(self.manifest.meta.icon_gray));
 		});

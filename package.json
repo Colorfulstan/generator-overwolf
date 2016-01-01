@@ -1,6 +1,6 @@
 {
   "name": "generator-overwolf",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Generates a basic overwolf app",
   "main": "generators/app/index.js",
   "scripts": {
@@ -13,7 +13,11 @@
     "app",
     "ingame overlay"
   ],
-  "author": "Colorfulstan",
+  "author": {
+    "name": "Colorfulstan | Jonas Krispin",
+    "email": "npm@krispin.it",
+    "url": "https://github.com/colorfulstan"
+  },
   "repository": "Colorfulstan/generator-overwolf",
   "license": "MIT",
   "dependencies": {
