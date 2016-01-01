@@ -1,0 +1,26 @@
+{
+  "name": "generator-overwolf",
+  "version": "0.1.0",
+  "description": "Generates a basic overwolf app",
+  "main": "generators/app/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "yeoman-generator",
+    "overwolf",
+    "scaffold",
+    "app",
+    "ingame overlay"
+  ],
+  "author": "Colorfulstan",
+  "repository": "Colorfulstan/generator-overwolf",
+  "license": "MIT",
+  "dependencies": {
+    "yeoman-generator": "^0.22.1"
+  },
+  "files" : [
+  	"generators/app",
+  	"generators/window"
+  	]
+}

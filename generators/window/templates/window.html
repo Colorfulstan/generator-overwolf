@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+	<title><%= title %></title>
+
+	<script src="<%= scriptSharedPath %>"></script>
+	<script src="<%= scriptPath %>"></script>
+
+	<link rel="stylesheet" href="<%= cssSharedPath %>" type="text/css" />
+	<link rel="stylesheet" href="<%= cssPath %>" type="text/css" />
+</head>
+
+<body>
+<div class="dragResize-handle" data-action="dragResize-window"></div>
+<div id="content" data-action="dragMove-window">
+	<h1>Hello, world!</h1>
+	<p>You can drag from anywhere you want, and resize from bottom right corner.</p>
+	<button id="close" class="close-btn" data-action="close-window">Close</button>
+</div>
+</body>
+</html>

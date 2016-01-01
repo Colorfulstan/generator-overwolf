@@ -1,0 +1,20 @@
+html, body {
+    background-color: white;
+    border: solid 1px black;
+}
+
+.dragResize-handle {
+    width: 20px;
+    height: 20px;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+}
+
+[data-action="dragResize-window"] {
+    background-color: dimgrey;
+}
+
+[data-action="dragMove-window"] {
+    background-color: gray;
+}
