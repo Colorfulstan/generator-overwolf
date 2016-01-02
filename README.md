@@ -8,6 +8,8 @@ Contributions and discussions about project-structure and features are welcome.
 Unit-Tests will be provided as soon as I have the time to figure out how to create them for yeoman 
 or someone contributes some to build upon on.
 
+Join the discussion at the [overwolf forum](http://forums.overwolf.com/index.php?/topic/6516-yeoman-generator-overwolf/)
+
 ## Requirements
 
 You need [nodeJS](https://nodejs.org/en/) to use yeoman generators.
