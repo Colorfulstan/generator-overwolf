@@ -36,6 +36,7 @@ module.exports = generators.Base.extend({
 			manifestConfirmOverwriteOrEnd,
 			manifestMeta,
 			manifestPermissions,
+			manifestPlugins,
 			doneManifest
 		]);
 
@@ -200,6 +201,37 @@ module.exports = generators.Base.extend({
 			});
 		}
 
+		function manifestPlugins(callback) {
+			self.log('---------------------');
+			self.prompt({
+				type: 'confirm',
+				name: 'continue',
+				// TODO: automate download and addition of plugin .dll through repository
+				message: 'Include Plugins in your App? (You need to add the plugin.dll in /plugins directory and in your html)',
+				default: false
+			}, function (answers) {
+				if (answers.continue === true) {
+					self.prompt({
+						type: "checkbox",
+						name: "plugins",
+						message: "Plugins to include (space to select)",
+						choices: [
+							// IO Plugin.
+							{name: 'npSimpleIOPlugin.dll'}
+						]
+					}, function (answers) {
+						var dirPrefix = 'plugins/';
+						self.answers.plugins = answers.plugins.map(function (val, index, arr) {
+							return dirPrefix + val;
+						});
+						callback(null);
+					});
+				} else {
+					callback(null);
+				}
+			});
+		}
+
 		function doneManifest(callback) {
 			done();
 			callback(null);
@@ -242,7 +274,7 @@ module.exports = generators.Base.extend({
 				externally_connectable: {
 					matches: []
 				},
-				plugins: [],
+				plugins: self.answers.plugins,
 				hotkeys: {},
 				content_scripts: [], // TODO: how to make use of this?
 				launch_events: [],
@@ -268,6 +300,14 @@ module.exports = generators.Base.extend({
 			self.fs.copy(self.templatePath('icon_hover.png'), self.destinationPath(self.manifest.meta.icon));
 			self.fs.copy(self.templatePath('icon_inactive.png'), self.destinationPath(self.manifest.meta.icon_gray));
 		});
+
+		if (self.answers.plugins) {
+			mkdirp(self.destinationPath('plugins'), function (err) {
+				// path was created unless there was error
+				self.log('plugin directory created', err);
+				// TODO: add download of plugin .dlls here
+			});
+		}
 
 		// write the manifest.json
 		this.fs.writeJSON(this.destinationPath('manifest.json'), this.manifest);
