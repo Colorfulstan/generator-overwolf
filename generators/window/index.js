@@ -39,7 +39,7 @@ module.exports = MyBase.extend({
 			cssShared: 'shared.css'
 		};
 
-		var base = 'windows/';
+		var base = 'Files/';
 		/** paths with trailing slashes */
 		this.paths = {
 			base: base,
@@ -116,7 +116,7 @@ module.exports = MyBase.extend({
 			var promptsWindow = [
 				{
 					type: "checkbox", name: "options",
-					message: "select options:",
+					message: "select options (space to select):",
 					choices: [
 						{name: 'resizable', checked: true},
 						{name: 'desktop_only'},

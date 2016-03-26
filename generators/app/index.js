@@ -243,10 +243,10 @@ module.exports = generators.Base.extend({
 		var self = this;
 		this.log('configuring');
 
-		var iconName = 'icon';
-		var iconNameInactive = iconName + '_inactive.png';
-		var iconNameHover = iconName + '_hover.png';
-		var iconPath = "assets/img/";
+		var iconName = 'Icon';
+		var iconNameInactive = iconName + 'MouseNormal.png';
+		var iconNameHover = iconName + 'MouseOver.png';
+		var iconPath = ""; // root of app
 
 		// http://developers.overwolf.com/documentation/overwolf/manifest-json
 		this.manifest = { // TODO: export to a template-file // (created for API version 0.89)
@@ -295,10 +295,10 @@ module.exports = generators.Base.extend({
 		this.log('writing');
 		var self = this;
 
-		mkdirp(self.destinationPath('assets/img/'), function (err) {
+		mkdirp(self.destinationPath(''), function (err) {
 			// path was created unless there was error
-			self.fs.copy(self.templatePath('icon_hover.png'), self.destinationPath(self.manifest.meta.icon));
-			self.fs.copy(self.templatePath('icon_inactive.png'), self.destinationPath(self.manifest.meta.icon_gray));
+			self.fs.copy(self.templatePath('IconMouseOver.png'), self.destinationPath(self.manifest.meta.icon));
+			self.fs.copy(self.templatePath('IconMouseNormal.png'), self.destinationPath(self.manifest.meta.icon_gray));
 		});
 
 		if (self.answers.plugins) {
